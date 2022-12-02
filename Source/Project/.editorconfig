@@ -1,0 +1,5 @@
+[*.cs]
+# Suppress
+
+[/Data/Migrations/**/*.cs]
+dotnet_diagnostic.IDE0240.severity = none

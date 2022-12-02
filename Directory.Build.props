@@ -1,0 +1,12 @@
+<Project>
+	<PropertyGroup>
+		<!--
+		<AnalysisLevel>latest-all</AnalysisLevel>
+		<AnalysisMode>All</AnalysisMode>
+		<CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		-->
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	</PropertyGroup>
+</Project>

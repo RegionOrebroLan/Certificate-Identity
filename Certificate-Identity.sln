@@ -1,0 +1,152 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{EA085C9A-8C5B-44CE-ACC2-532FBC79E558}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		License = License
+		NuGet.config = NuGet.config
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Certificates", "Certificates", "{CE1CEAE3-15AA-4D8F-AD69-C58989DF5A46}"
+	ProjectSection(SolutionItems) = preProject
+		Certificates\certificate-id.example.local.crt = Certificates\certificate-id.example.local.crt
+		Certificates\certificate-id.example.local.key = Certificates\certificate-id.example.local.key
+		Certificates\certificate-id.example.local.p12 = Certificates\certificate-id.example.local.p12
+		Certificates\https-root.crt = Certificates\https-root.crt
+		Certificates\https-root.key = Certificates\https-root.key
+		Certificates\https-root.p12 = Certificates\https-root.p12
+		Certificates\ReadMe.md = Certificates\ReadMe.md
+		Certificates\siths-hsa-alice.crt = Certificates\siths-hsa-alice.crt
+		Certificates\siths-hsa-alice.key = Certificates\siths-hsa-alice.key
+		Certificates\siths-hsa-alice.p12 = Certificates\siths-hsa-alice.p12
+		Certificates\siths-hsa-bob.crt = Certificates\siths-hsa-bob.crt
+		Certificates\siths-hsa-bob.key = Certificates\siths-hsa-bob.key
+		Certificates\siths-hsa-bob.p12 = Certificates\siths-hsa-bob.p12
+		Certificates\siths-hsa-id.example.local.crt = Certificates\siths-hsa-id.example.local.crt
+		Certificates\siths-hsa-id.example.local.key = Certificates\siths-hsa-id.example.local.key
+		Certificates\siths-hsa-id.example.local.p12 = Certificates\siths-hsa-id.example.local.p12
+		Certificates\siths-hsa-intermediate.crt = Certificates\siths-hsa-intermediate.crt
+		Certificates\siths-hsa-intermediate.key = Certificates\siths-hsa-intermediate.key
+		Certificates\siths-hsa-intermediate.p12 = Certificates\siths-hsa-intermediate.p12
+		Certificates\siths-person-alice.crt = Certificates\siths-person-alice.crt
+		Certificates\siths-person-alice.key = Certificates\siths-person-alice.key
+		Certificates\siths-person-alice.p12 = Certificates\siths-person-alice.p12
+		Certificates\siths-person-bob.crt = Certificates\siths-person-bob.crt
+		Certificates\siths-person-bob.key = Certificates\siths-person-bob.key
+		Certificates\siths-person-bob.p12 = Certificates\siths-person-bob.p12
+		Certificates\siths-person-id.example.local.crt = Certificates\siths-person-id.example.local.crt
+		Certificates\siths-person-id.example.local.key = Certificates\siths-person-id.example.local.key
+		Certificates\siths-person-id.example.local.p12 = Certificates\siths-person-id.example.local.p12
+		Certificates\siths-person-intermediate.crt = Certificates\siths-person-intermediate.crt
+		Certificates\siths-person-intermediate.key = Certificates\siths-person-intermediate.key
+		Certificates\siths-person-intermediate.p12 = Certificates\siths-person-intermediate.p12
+		Certificates\siths-root.crt = Certificates\siths-root.crt
+		Certificates\siths-root.key = Certificates\siths-root.key
+		Certificates\siths-root.p12 = Certificates\siths-root.p12
+		Certificates\test-siths-hsa-alice.crt = Certificates\test-siths-hsa-alice.crt
+		Certificates\test-siths-hsa-alice.key = Certificates\test-siths-hsa-alice.key
+		Certificates\test-siths-hsa-alice.p12 = Certificates\test-siths-hsa-alice.p12
+		Certificates\test-siths-hsa-bob.crt = Certificates\test-siths-hsa-bob.crt
+		Certificates\test-siths-hsa-bob.key = Certificates\test-siths-hsa-bob.key
+		Certificates\test-siths-hsa-bob.p12 = Certificates\test-siths-hsa-bob.p12
+		Certificates\test-siths-hsa-id.example.local.crt = Certificates\test-siths-hsa-id.example.local.crt
+		Certificates\test-siths-hsa-id.example.local.key = Certificates\test-siths-hsa-id.example.local.key
+		Certificates\test-siths-hsa-id.example.local.p12 = Certificates\test-siths-hsa-id.example.local.p12
+		Certificates\test-siths-hsa-intermediate.crt = Certificates\test-siths-hsa-intermediate.crt
+		Certificates\test-siths-hsa-intermediate.key = Certificates\test-siths-hsa-intermediate.key
+		Certificates\test-siths-hsa-intermediate.p12 = Certificates\test-siths-hsa-intermediate.p12
+		Certificates\test-siths-person-alice.crt = Certificates\test-siths-person-alice.crt
+		Certificates\test-siths-person-alice.key = Certificates\test-siths-person-alice.key
+		Certificates\test-siths-person-alice.p12 = Certificates\test-siths-person-alice.p12
+		Certificates\test-siths-person-bob.crt = Certificates\test-siths-person-bob.crt
+		Certificates\test-siths-person-bob.key = Certificates\test-siths-person-bob.key
+		Certificates\test-siths-person-bob.p12 = Certificates\test-siths-person-bob.p12
+		Certificates\test-siths-person-id.example.local.crt = Certificates\test-siths-person-id.example.local.crt
+		Certificates\test-siths-person-id.example.local.key = Certificates\test-siths-person-id.example.local.key
+		Certificates\test-siths-person-id.example.local.p12 = Certificates\test-siths-person-id.example.local.p12
+		Certificates\test-siths-person-intermediate.crt = Certificates\test-siths-person-intermediate.crt
+		Certificates\test-siths-person-intermediate.key = Certificates\test-siths-person-intermediate.key
+		Certificates\test-siths-person-intermediate.p12 = Certificates\test-siths-person-intermediate.p12
+		Certificates\test-siths-root.crt = Certificates\test-siths-root.crt
+		Certificates\test-siths-root.key = Certificates\test-siths-root.key
+		Certificates\test-siths-root.p12 = Certificates\test-siths-root.p12
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{09FE6C9F-BA86-432D-B95E-49E45DF76AC8}"
+	ProjectSection(SolutionItems) = preProject
+		Clients\.editorconfig = Clients\.editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{95A4E149-0588-4BB5-BCCC-3043E16D61C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{1F0008AA-82F0-4F88-A64C-BD1A8E030B4D}"
+	ProjectSection(SolutionItems) = preProject
+		Source\Implementation\.dockerignore = Source\Implementation\.dockerignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9114E87D-DCB1-4F12-B6A1-586D74A0B4E4}"
+	ProjectSection(SolutionItems) = preProject
+		Tests\.editorconfig = Tests\.editorconfig
+		Tests\Directory.Build.props = Tests\Directory.Build.props
+		Tests\Directory.Build.targets = Tests\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Source\Implementation\Application\Application.csproj", "{E34575C7-0D45-4244-ACCB-E4F145B301F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project", "Source\Project\Project.csproj", "{858C5BD2-D127-4F90-84DE-976F467D1ED0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration-tests", "Tests\Integration-tests\Integration-tests.csproj", "{D81DEC09-423A-4C2C-B569-288FBAE72645}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit-tests", "Tests\Unit-tests\Unit-tests.csproj", "{8E586BCE-8902-4704-8A48-42692B78281E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "Clients\IdentityServer\IdentityServer.csproj", "{2BAF9B58-9B57-4361-A4EC-080A977362A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E34575C7-0D45-4244-ACCB-E4F145B301F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E34575C7-0D45-4244-ACCB-E4F145B301F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E34575C7-0D45-4244-ACCB-E4F145B301F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E34575C7-0D45-4244-ACCB-E4F145B301F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858C5BD2-D127-4F90-84DE-976F467D1ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858C5BD2-D127-4F90-84DE-976F467D1ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858C5BD2-D127-4F90-84DE-976F467D1ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858C5BD2-D127-4F90-84DE-976F467D1ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81DEC09-423A-4C2C-B569-288FBAE72645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81DEC09-423A-4C2C-B569-288FBAE72645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81DEC09-423A-4C2C-B569-288FBAE72645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81DEC09-423A-4C2C-B569-288FBAE72645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E586BCE-8902-4704-8A48-42692B78281E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E586BCE-8902-4704-8A48-42692B78281E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E586BCE-8902-4704-8A48-42692B78281E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E586BCE-8902-4704-8A48-42692B78281E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAF9B58-9B57-4361-A4EC-080A977362A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BAF9B58-9B57-4361-A4EC-080A977362A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BAF9B58-9B57-4361-A4EC-080A977362A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BAF9B58-9B57-4361-A4EC-080A977362A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F0008AA-82F0-4F88-A64C-BD1A8E030B4D} = {95A4E149-0588-4BB5-BCCC-3043E16D61C2}
+		{E34575C7-0D45-4244-ACCB-E4F145B301F5} = {1F0008AA-82F0-4F88-A64C-BD1A8E030B4D}
+		{858C5BD2-D127-4F90-84DE-976F467D1ED0} = {95A4E149-0588-4BB5-BCCC-3043E16D61C2}
+		{D81DEC09-423A-4C2C-B569-288FBAE72645} = {9114E87D-DCB1-4F12-B6A1-586D74A0B4E4}
+		{8E586BCE-8902-4704-8A48-42692B78281E} = {9114E87D-DCB1-4F12-B6A1-586D74A0B4E4}
+		{2BAF9B58-9B57-4361-A4EC-080A977362A1} = {09FE6C9F-BA86-432D-B95E-49E45DF76AC8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E82B32FC-4E16-4C62-A6F8-604A75A039DF}
+	EndGlobalSection
+EndGlobal

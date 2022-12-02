@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyName>RegionOrebroLan.CertificateIdentity</AssemblyName>
+		<Authors>Region Örebro län</Authors>
+		<Company>$(Authors)</Company>
+		<Description>Library to use when setting up an IdentityServer for interactive client certificate authentication.</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/RegionOrebroLan/Certificate-Identity</PackageProjectUrl>
+		<PackageReleaseNotes>https://github.com/RegionOrebroLan/Certificate-Identity/releases</PackageReleaseNotes>
+		<PackageTags></PackageTags>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+		<TargetFrameworks>net7.0</TargetFrameworks>
+		<!-- Version following Duende.IdentityServer. -->
+		<VersionPrefix>6.2.0.1</VersionPrefix>
+		<VersionSuffix>alpha</VersionSuffix>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="2.5.1" />
+	</ItemGroup>
+</Project>
