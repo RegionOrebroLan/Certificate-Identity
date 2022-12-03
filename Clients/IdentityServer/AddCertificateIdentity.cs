@@ -38,6 +38,11 @@ namespace IdentityServer
 					options.Authority = _authority;
 					options.CallbackPath = $"/signin-{clientId}";
 					options.ClientId = clientId;
+					options.MapInboundClaims = false;
+					options.Scope.Clear();
+					options.Scope.Add("email");
+					options.Scope.Add("openid");
+					options.Scope.Add("profile");
 					/*
 						Below could also be handled by
 
