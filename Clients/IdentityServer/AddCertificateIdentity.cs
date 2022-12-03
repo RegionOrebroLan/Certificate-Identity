@@ -5,6 +5,12 @@ namespace IdentityServer
 {
 	public static class AddCertificateIdentityExtension
 	{
+		#region Fields
+
+		private const string _authority = "https://certificate-id.example.local:50000";
+
+		#endregion
+
 		#region Methods
 
 		public static AuthenticationBuilder AddCertificateIdentity(this AuthenticationBuilder authenticationBuilder)
@@ -12,14 +18,26 @@ namespace IdentityServer
 			if(authenticationBuilder == null)
 				throw new ArgumentNullException(nameof(authenticationBuilder));
 
-			const string authority = "https://certificate-id.example.local:50000";
+			authenticationBuilder
+				.AddCertificateIdentity("SithsHsaCertificate", "Sign in with Siths HSA", "siths-hsa")
+				.AddCertificateIdentity("SithsPersonCertificate", "Sign in with Siths Person", "siths-person")
+				.AddCertificateIdentity("TestSithsHsaCertificate", "Sign in with Test Siths HSA", "test-siths-hsa")
+				.AddCertificateIdentity("TestSithsPersonCertificate", "Sign in with Test Siths Person", "test-siths-person");
+
+			return authenticationBuilder;
+		}
+
+		private static AuthenticationBuilder AddCertificateIdentity(this AuthenticationBuilder authenticationBuilder, string authenticationSchemeName, string authenticationSchemeDisplayName, string clientId)
+		{
+			if(authenticationBuilder == null)
+				throw new ArgumentNullException(nameof(authenticationBuilder));
 
 			authenticationBuilder
-				.AddOpenIdConnect("SithsHsaCertificate", "Sign in with Siths HSA", options =>
+				.AddOpenIdConnect(authenticationSchemeName, authenticationSchemeDisplayName, options =>
 				{
-					options.Authority = authority;
-					options.CallbackPath = "/signin-siths-hsa";
-					options.ClientId = "siths-hsa";
+					options.Authority = _authority;
+					options.CallbackPath = $"/signin-{clientId}";
+					options.ClientId = clientId;
 					/*
 						Below could also be handled by
 
@@ -29,27 +47,6 @@ namespace IdentityServer
 							})
 
 					*/
-					options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-				})
-				.AddOpenIdConnect("SithsPersonCertificate", "Sign in with Siths Person", options =>
-				{
-					options.Authority = authority;
-					options.CallbackPath = "/signin-siths-person";
-					options.ClientId = "siths-person";
-					options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-				})
-				.AddOpenIdConnect("TestSithsHsaCertificate", "Sign in with Test Siths HSA", options =>
-				{
-					options.Authority = authority;
-					options.CallbackPath = "/signin-test-siths-hsa";
-					options.ClientId = "test-siths-hsa";
-					options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-				})
-				.AddOpenIdConnect("TestSithsPersonCertificate", "Sign in with Test Siths Person", options =>
-				{
-					options.Authority = authority;
-					options.CallbackPath = "/signin-test-siths-person";
-					options.ClientId = "test-siths-person";
 					options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 				});
 
