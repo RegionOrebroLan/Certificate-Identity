@@ -15,12 +15,6 @@ namespace IdentityServer.Pages.Diagnostics;
 [Authorize]
 public class Index : PageModel
 {
-	#region Fields
-
-	private ViewModel _view;
-
-	#endregion
-
 	#region Constructors
 
 	public Index(TestUserStore userStore)
@@ -33,74 +27,106 @@ public class Index : PageModel
 	#region Properties
 
 	protected internal virtual TestUserStore UserStore { get; }
-
-	public virtual ViewModel View
-	{
-		get
-		{
-			if(this._view == null)
-			{
-				var view = new ViewModel();
-
-				var authenticateResult = this.HttpContext.AuthenticateAsync().Result;
-
-				var claims = new List<Claim>();
-				claims.AddRange(authenticateResult.Principal.Claims);
-
-				var subject = authenticateResult.Principal.GetSubjectId();
-
-				var user = this.UserStore.FindBySubjectId(subject);
-
-				foreach(var claim in user.Claims)
-				{
-					if(claims.Any(item => string.Equals(item.Type, claim.Type, StringComparison.OrdinalIgnoreCase)))
-						continue;
-
-					claims.Add(claim);
-				}
-
-				claims.Sort((first, second) => string.Compare(first?.Type, second?.Type, StringComparison.OrdinalIgnoreCase));
-
-				foreach(var claim in claims)
-				{
-					view.Claims.Add(claim);
-				}
-
-				if(authenticateResult.Properties.Items.ContainsKey("client_list"))
-				{
-					var encoded = authenticateResult.Properties.Items["client_list"];
-					var bytes = Base64Url.Decode(encoded);
-					var value = Encoding.UTF8.GetString(bytes);
-
-					foreach(var client in JsonSerializer.Deserialize<string[]>(value))
-					{
-						view.Clients.Add(client);
-					}
-				}
-
-				foreach(var (key, value) in authenticateResult.Properties.Items)
-				{
-					view.Properties.Add(key, value);
-				}
-
-				this._view = view;
-			}
-
-			return this._view;
-		}
-	}
+	public virtual ViewModel View { get; } = new();
 
 	#endregion
 
 	#region Methods
 
-	public async Task<IActionResult> OnGet()
+	protected internal virtual int CompareClaims(Claim firstClaim, Claim secondClaim)
 	{
-		var localAddresses = new string[] { "127.0.0.1", "::1", this.HttpContext.Connection.LocalIpAddress.ToString() };
+		return string.Compare(firstClaim?.Type, secondClaim?.Type, StringComparison.OrdinalIgnoreCase);
+	}
+
+	public virtual async Task<IActionResult> OnGet()
+	{
+		var localAddresses = new[] { "127.0.0.1", "::1", this.HttpContext.Connection.LocalIpAddress.ToString() };
 		if(!localAddresses.Contains(this.HttpContext.Connection.RemoteIpAddress.ToString()))
 			return this.NotFound();
 
+		await this.PopulateModelAsync();
+
 		return await Task.FromResult(this.Page());
+	}
+
+	protected internal virtual async Task PopulateAuthenticationClaimsAsync(AuthenticateResult authenticateResult)
+	{
+		await Task.CompletedTask;
+
+		var claims = new List<Claim>(authenticateResult?.Principal?.Claims ?? Enumerable.Empty<Claim>());
+
+		claims.Sort(this.CompareClaims);
+
+		foreach(var claim in claims)
+		{
+			this.View.AuthenticationClaims.Add(claim);
+		}
+	}
+
+	protected internal virtual async Task PopulateAuthenticationClientsAsync(AuthenticateResult authenticateResult)
+	{
+		await Task.CompletedTask;
+
+		var properties = authenticateResult?.Properties?.Items;
+
+		if(properties == null)
+			return;
+
+		if(!properties.TryGetValue("client_list", out var encodedClients))
+			return;
+
+		var bytes = Base64Url.Decode(encodedClients);
+		var value = Encoding.UTF8.GetString(bytes);
+		var clients = new SortedSet<string>(JsonSerializer.Deserialize<string[]>(value) ?? Array.Empty<string>());
+
+		foreach(var client in clients)
+		{
+			this.View.AuthenticationClients.Add(client);
+		}
+	}
+
+	protected internal virtual async Task PopulateAuthenticationPropertiesAsync(AuthenticateResult authenticateResult)
+	{
+		await Task.CompletedTask;
+
+		foreach(var (key, value) in authenticateResult?.Properties?.Items ?? new Dictionary<string, string>())
+		{
+			this.View.AuthenticationProperties.Add(key, value);
+		}
+	}
+
+	protected internal virtual async Task PopulateModelAsync()
+	{
+		var authenticateResult = await this.HttpContext.AuthenticateAsync();
+
+		await this.PopulateAuthenticationClaimsAsync(authenticateResult);
+		await this.PopulateAuthenticationClientsAsync(authenticateResult);
+		await this.PopulateAuthenticationPropertiesAsync(authenticateResult);
+		await this.PopulateUserClaimsAsync(authenticateResult);
+	}
+
+	protected internal virtual async Task PopulateUserClaimsAsync(AuthenticateResult authenticateResult)
+	{
+		await Task.CompletedTask;
+
+		var subject = authenticateResult?.Principal?.GetSubjectId();
+
+		if(string.IsNullOrEmpty(subject))
+			return;
+
+		var user = this.UserStore.FindBySubjectId(subject);
+
+		if(user == null)
+			return;
+
+		var claims = new List<Claim>(user.Claims);
+
+		claims.Sort(this.CompareClaims);
+
+		foreach(var claim in claims)
+		{
+			this.View.UserClaims.Add(claim);
+		}
 	}
 
 	#endregion

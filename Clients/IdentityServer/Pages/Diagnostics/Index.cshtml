@@ -2,17 +2,18 @@
 @model IdentityServer.Pages.Diagnostics.Index
 <div class="diagnostics-page">
 	<div class="lead">
-		<h1>Authentication Cookie</h1>
+		<h1>Diagnostics</h1>
 	</div>
+	<h2>Authentication Cookie</h2>
 	<div class="row">
 		<div class="col">
 			<div class="card">
 				<div class="card-header">
-					<h2>Claims</h2>
+					<h3>Claims</h3>
 				</div>
 				<div class="card-body">
 					<dl>
-						@foreach(var claim in Model.View.Claims)
+						@foreach(var claim in Model.View.AuthenticationClaims)
 						{
 							<dt>@claim.Type</dt>
 							<dd>@claim.Value</dd>
@@ -24,21 +25,40 @@
 		<div class="col">
 			<div class="card">
 				<div class="card-header">
-					<h2>Properties</h2>
+					<h3>Properties</h3>
 				</div>
 				<div class="card-body">
 					<dl>
-						@foreach(var (key, value) in Model.View.Properties)
+						@foreach(var (key, value) in Model.View.AuthenticationProperties)
 						{
 							<dt>@key</dt>
 							<dd>@value</dd>
 						}
-						@if(Model.View.Clients.Any())
+						@if(Model.View.AuthenticationClients.Any())
 						{
 							<dt>Clients</dt>
 							<dd>
-								@string.Join(", ", Model.View.Clients)
+								@string.Join(", ", Model.View.AuthenticationClients)
 							</dd>
+						}
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2 class="mt-3">User</h2>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-header">
+					<h3>Claims</h3>
+				</div>
+				<div class="card-body">
+					<dl>
+						@foreach(var claim in Model.View.UserClaims)
+						{
+							<dt>@claim.Type</dt>
+							<dd>@claim.Value</dd>
 						}
 					</dl>
 				</div>

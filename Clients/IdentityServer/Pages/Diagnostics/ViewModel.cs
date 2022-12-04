@@ -9,9 +9,10 @@ public class ViewModel
 {
 	#region Properties
 
-	public virtual IList<Claim> Claims { get; } = new List<Claim>();
-	public virtual IList<string> Clients { get; } = new List<string>();
-	public virtual IDictionary<string, string> Properties { get; } = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+	public virtual IList<Claim> AuthenticationClaims { get; } = new List<Claim>();
+	public virtual IList<string> AuthenticationClients { get; } = new List<string>();
+	public virtual IDictionary<string, string> AuthenticationProperties { get; } = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+	public virtual IList<Claim> UserClaims { get; } = new List<Claim>();
 
 	#endregion
 }
