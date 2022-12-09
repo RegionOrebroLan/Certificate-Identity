@@ -76,7 +76,7 @@ namespace RegionOrebroLan.CertificateIdentity.Data
 				}
 				catch(Exception exception)
 				{
-					throw new InvalidOperationException("Error when testing the database. There are no tables. Probably migrations are missing.", exception);
+					throw new InvalidOperationException("Error when querying the database. There are no tables. Probably migrations are missing.", exception);
 				}
 			}
 			// ReSharper restore ConvertToUsingDeclaration
