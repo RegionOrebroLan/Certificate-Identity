@@ -2,7 +2,7 @@ using RegionOrebroLan.CertificateIdentity.Configuration;
 
 namespace RegionOrebroLan.CertificateIdentity.Data.Configuration
 {
-	public class DataOptions : ConnectionOptions
+	public class DataDependencyInjectionOptions : ConnectionOptions
 	{
 		#region Properties
 

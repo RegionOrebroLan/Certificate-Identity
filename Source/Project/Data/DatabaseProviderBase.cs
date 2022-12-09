@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RegionOrebroLan.CertificateIdentity.Configuration;
-using RegionOrebroLan.CertificateIdentity.Data.Configuration;
 
 namespace RegionOrebroLan.CertificateIdentity.Data
 {
@@ -15,13 +14,13 @@ namespace RegionOrebroLan.CertificateIdentity.Data
 	{
 		#region Methods
 
-		public virtual void Add(IConfiguration configuration, DataOptions dataOptions, IHostEnvironment hostEnvironment, IServiceCollection services)
+		public virtual void Add(IConfiguration configuration, ConnectionOptions connectionOptions, IHostEnvironment hostEnvironment, IServiceCollection services)
 		{
 			if(configuration == null)
 				throw new ArgumentNullException(nameof(configuration));
 
-			if(dataOptions == null)
-				throw new ArgumentNullException(nameof(dataOptions));
+			if(connectionOptions == null)
+				throw new ArgumentNullException(nameof(connectionOptions));
 
 			if(hostEnvironment == null)
 				throw new ArgumentNullException(nameof(hostEnvironment));
@@ -31,7 +30,7 @@ namespace RegionOrebroLan.CertificateIdentity.Data
 
 			var identityServerBuilder = this.CreateIdentityServerBuilder(services);
 
-			var connectionString = configuration.GetConnectionString(dataOptions.ConnectionStringName);
+			var connectionString = configuration.GetConnectionString(connectionOptions.ConnectionStringName);
 
 			connectionString = this.ResolveConnectionString(connectionString, hostEnvironment);
 

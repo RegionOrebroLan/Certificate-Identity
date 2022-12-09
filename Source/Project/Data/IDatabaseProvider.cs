@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RegionOrebroLan.CertificateIdentity.Data.Configuration;
+using RegionOrebroLan.CertificateIdentity.Configuration;
 
 namespace RegionOrebroLan.CertificateIdentity.Data
 {
@@ -10,7 +10,7 @@ namespace RegionOrebroLan.CertificateIdentity.Data
 	{
 		#region Methods
 
-		void Add(IConfiguration configuration, DataOptions dataOptions, IHostEnvironment hostEnvironment, IServiceCollection services);
+		void Add(IConfiguration configuration, ConnectionOptions connectionOptions, IHostEnvironment hostEnvironment, IServiceCollection services);
 		void Use(IApplicationBuilder applicationBuilder);
 
 		#endregion

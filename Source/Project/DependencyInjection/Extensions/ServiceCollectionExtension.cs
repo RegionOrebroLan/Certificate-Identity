@@ -55,20 +55,20 @@ namespace RegionOrebroLan.CertificateIdentity.DependencyInjection.Extensions
 				.AddInMemoryClients(configuration.GetSection(ConfigurationKeys.ClientsPath))
 				.AddInMemoryIdentityResources(configuration.GetSection(ConfigurationKeys.IdentityResourcesPath));
 
-			var dataOptions = new DataOptions();
-			configuration.GetSection(ConfigurationKeys.DataPath).Bind(dataOptions);
+			var dataDependencyInjectionOptions = new DataDependencyInjectionOptions();
+			configuration.GetSection(ConfigurationKeys.DataPath).Bind(dataDependencyInjectionOptions);
 
-			if(dataOptions.ProviderType == null)
+			if(dataDependencyInjectionOptions.ProviderType == null)
 				throw new InvalidOperationException($"The data-provider-type is null. You need to configure it, {"Data:ProviderType".ToStringRepresentation()}.");
 
-			var databaseProvider = (IDatabaseProvider)Activator.CreateInstance(dataOptions.ProviderType);
+			var databaseProvider = (IDatabaseProvider)Activator.CreateInstance(dataDependencyInjectionOptions.ProviderType);
 
 			if(databaseProvider == null)
 				throw new InvalidOperationException("The database-provider is null.");
 
 			services.TryAddSingleton(databaseProvider);
 
-			databaseProvider.Add(configuration, dataOptions, webHostEnvironment, services);
+			databaseProvider.Add(configuration, dataDependencyInjectionOptions, webHostEnvironment, services);
 
 			return services;
 		}
