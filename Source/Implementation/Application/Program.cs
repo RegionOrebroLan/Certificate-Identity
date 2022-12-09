@@ -57,6 +57,7 @@ try
 		});
 	builder.Services.AddCertificateAuthentication(builder.Configuration);
 	builder.Services.AddControllersWithViews();
+	builder.Services.AddDataProtection(builder.Configuration, builder.Environment);
 	builder.Services.AddFeatureManagement();
 	builder.Services.AddIdentityServer(builder.Configuration, builder.Environment);
 	builder.Services.AddKestrelHttps(builder.Configuration);
@@ -95,6 +96,7 @@ try
 		app.UseCookiePolicy();
 
 	app
+		.UseDataProtection()
 		.UseSecurityHeaders()
 		.UseRouting()
 		.UseIdentityServer()

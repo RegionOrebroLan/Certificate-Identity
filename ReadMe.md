@@ -316,29 +316,48 @@ Copy all the commands below and run them in the Package Manager Console for the 
 
 If you want more migration-information you can add the -Verbose parameter:
 
-	Add-Migration TheMigration -Context TheDatabaseContext -OutputDir Data/Migrations -Project Project -Verbose;
+	Add-Migration TheMigration -Context TheDatabaseContext -OutputDir Data/Migrations -Project Project -StartupProject Project -Verbose;
 
-**Important!** Before running the commands below you need to ensure the "Project"-project is set as startup-project. 
-
-#### 2.5.1 Operational (PersistedGrant)
+#### 2.5.1 DataProtection
 
 ##### 2.5.1.1 Create migrations
 
 	Write-Host "Removing migrations...";
-	Remove-Migration -Context SqliteOperational -Force -Project Project;
-	Remove-Migration -Context SqlServerOperational -Force -Project Project;
+	Remove-Migration -Context SqliteDataProtection -Force -Project Project -StartupProject Project;
+	Remove-Migration -Context SqlServerDataProtection -Force -Project Project -StartupProject Project;
 	Write-Host "Removing current migrations-directory...";
-	Remove-Item "Project\Data\Migrations\Operational" -ErrorAction Ignore -Force -Recurse;
+	Remove-Item "Project\DataProtection\Data\Migrations" -ErrorAction Ignore -Force -Recurse;
 	Write-Host "Creating migrations...";
-	Add-Migration SqliteOperationalMigration -Context SqliteOperational -OutputDir Data/Migrations/Operational/Sqlite -Project Project;
-	Add-Migration SqlServerOperationalMigration -Context SqlServerOperational -OutputDir Data/Migrations/Operational/SqlServer -Project Project;
+	Add-Migration SqliteDataProtectionMigration -Context SqliteDataProtection -OutputDir DataProtection/Data/Migrations/Sqlite -Project Project -StartupProject Project;
+	Add-Migration SqlServerDataProtectionMigration -Context SqlServerDataProtection -OutputDir DataProtection/Data/Migrations/SqlServer -Project Project -StartupProject Project;
 	Write-Host "Finnished";
 
 ##### 2.5.1.2 Update migrations
 
 	Write-Host "Updating migrations...";
-	Add-Migration SqliteOperationalMigrationUpdate -Context SqliteOperational -OutputDir Data/Migrations/Operational/Sqlite -Project Project;
-	Add-Migration SqlServerOperationalMigrationUpdate -Context SqlServerOperational -OutputDir Data/Migrations/Operational/SqlServer -Project Project;
+	Add-Migration SqliteDataProtectionMigrationUpdate -Context SqliteDataProtection -OutputDir DataProtection/Data/Migrations/Sqlite -Project Project -StartupProject Project;
+	Add-Migration SqlServerDataProtectionMigrationUpdate -Context SqlServerDataProtection -OutputDir DataProtection/Data/Migrations/SqlServer -Project Project -StartupProject Project;
+	Write-Host "Finnished";
+
+#### 2.5.2 Operational (PersistedGrant)
+
+##### 2.5.2.1 Create migrations
+
+	Write-Host "Removing migrations...";
+	Remove-Migration -Context SqliteOperational -Force -Project Project -StartupProject Project;
+	Remove-Migration -Context SqlServerOperational -Force -Project Project -StartupProject Project;
+	Write-Host "Removing current migrations-directory...";
+	Remove-Item "Project\Data\Migrations\Operational" -ErrorAction Ignore -Force -Recurse;
+	Write-Host "Creating migrations...";
+	Add-Migration SqliteOperationalMigration -Context SqliteOperational -OutputDir Data/Migrations/Operational/Sqlite -Project Project -StartupProject Project;
+	Add-Migration SqlServerOperationalMigration -Context SqlServerOperational -OutputDir Data/Migrations/Operational/SqlServer -Project Project -StartupProject Project;
+	Write-Host "Finnished";
+
+##### 2.5.2.2 Update migrations
+
+	Write-Host "Updating migrations...";
+	Add-Migration SqliteOperationalMigrationUpdate -Context SqliteOperational -OutputDir Data/Migrations/Operational/Sqlite -Project Project -StartupProject Project;
+	Add-Migration SqlServerOperationalMigrationUpdate -Context SqlServerOperational -OutputDir Data/Migrations/Operational/SqlServer -Project Project -StartupProject Project;
 	Write-Host "Finnished";
 
 ### 2.6 Versioning

@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using RegionOrebroLan.CertificateIdentity.Configuration;
 using RegionOrebroLan.CertificateIdentity.Data;
 using RegionOrebroLan.CertificateIdentity.Data.Configuration;
+using RegionOrebroLan.CertificateIdentity.DataProtection;
+using RegionOrebroLan.CertificateIdentity.DataProtection.Configuration;
 using RegionOrebroLan.CertificateIdentity.Extensions;
 using RegionOrebroLan.CertificateIdentity.IdentityServer.Configuration.Extensions;
 using RegionOrebroLan.CertificateIdentity.Kestrel.Configuration;
@@ -31,6 +33,41 @@ namespace RegionOrebroLan.CertificateIdentity.DependencyInjection.Extensions
 
 			services.Configure<CertificateAuthenticationEventsOptions>(configuration.GetSection(ConfigurationKeys.CertificateAuthenticationEventsPath));
 			services.TryAddTransient<CertificateAuthenticationEvents>();
+
+			return services;
+		}
+
+		public static IServiceCollection AddDataProtection(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
+		{
+			if(services == null)
+				throw new ArgumentNullException(nameof(services));
+
+			if(configuration == null)
+				throw new ArgumentNullException(nameof(configuration));
+
+			if(webHostEnvironment == null)
+				throw new ArgumentNullException(nameof(webHostEnvironment));
+
+			var dataProtectionDependencyInjectionOptions = new DataProtectionDependencyInjectionOptions();
+			configuration.GetSection(ConfigurationKeys.DataProtectionPath).Bind(dataProtectionDependencyInjectionOptions);
+
+			IDataProtectionProvider dataProtectionProvider;
+
+			if(dataProtectionDependencyInjectionOptions.ProviderType == null)
+			{
+				dataProtectionProvider = new DefaultDataProtectionProvider();
+			}
+			else
+			{
+				dataProtectionProvider = (IDataProtectionProvider)Activator.CreateInstance(dataProtectionDependencyInjectionOptions.ProviderType);
+
+				if(dataProtectionProvider == null)
+					throw new InvalidOperationException("The data-protection-provider is null.");
+			}
+
+			services.TryAddSingleton(dataProtectionProvider);
+
+			dataProtectionProvider.Add(configuration, dataProtectionDependencyInjectionOptions, webHostEnvironment, services);
 
 			return services;
 		}

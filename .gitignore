@@ -398,6 +398,8 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Custom
+warmup.sem
+
 !Certificates/*.pfx
 
 Clients/IdentityServer/keys

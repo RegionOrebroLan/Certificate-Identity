@@ -11,6 +11,7 @@ namespace RegionOrebroLan.CertificateIdentity.Configuration
 		public const string ClientsPath = "Clients";
 		public const string CookiePolicyPath = "CookiePolicy";
 		public const string DataPath = "Data";
+		public const string DataProtectionPath = "DataProtection";
 		public const string DefaultConnectionStringName = "IdentityServer";
 		public const string ExceptionHandlingPath = "ExceptionHandling";
 		public const string ForwardedHeadersPath = "ForwardedHeaders";

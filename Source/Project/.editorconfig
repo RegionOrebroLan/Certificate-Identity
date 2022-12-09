@@ -3,3 +3,6 @@
 
 [/Data/Migrations/**/*.cs]
 dotnet_diagnostic.IDE0240.severity = none
+
+[/DataProtection/Data/Migrations/**/*.cs]
+dotnet_diagnostic.IDE0240.severity = none
