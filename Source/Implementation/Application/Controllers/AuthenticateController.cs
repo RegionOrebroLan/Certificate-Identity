@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using RegionOrebroLan.CertificateIdentity.Extensions;
+using RegionOrebroLan.CertificateIdentity.Logging.Extensions;
 
 namespace Application.Controllers
 {
@@ -40,8 +41,7 @@ namespace Application.Controllers
 
 			if(authorizationRequest == null)
 			{
-				if(this.Logger.IsEnabled(LogLevel.Information))
-					this.Logger.LogInformation("Not an authorization request.");
+				this.Logger.LogInformationIfEnabled("Not an authorization request.");
 			}
 			else
 			{
@@ -49,8 +49,7 @@ namespace Application.Controllers
 
 				if(client == null)
 				{
-					if(this.Logger.IsEnabled(LogLevel.Information))
-						this.Logger.LogInformation("Not a client-authentication request.");
+					this.Logger.LogInformationIfEnabled("Not a client-authentication request.");
 				}
 				else
 				{

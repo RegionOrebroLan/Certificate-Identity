@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RegionOrebroLan.CertificateIdentity.Extensions;
+using RegionOrebroLan.CertificateIdentity.Logging.Extensions;
 using RegionOrebroLan.CertificateIdentity.Web.Authentication.Certificate.Configuration;
 
 namespace RegionOrebroLan.CertificateIdentity.Web.Authentication.Certificate
@@ -79,8 +80,7 @@ namespace RegionOrebroLan.CertificateIdentity.Web.Authentication.Certificate
 
 			if(fallbackSubjectClaim == null)
 			{
-				if(this.Logger.IsEnabled(LogLevel.Warning))
-					this.Logger.LogWarning($"The claims-principal does not contain a claim with type {options.FallbackSubjectClaimType.ToStringRepresentation()} to use as {JwtClaimTypes.Subject.ToStringRepresentation()} claim.");
+				this.Logger.LogWarningIfEnabled(() => $"The claims-principal does not contain a claim with type {options.FallbackSubjectClaimType.ToStringRepresentation()} to use as {JwtClaimTypes.Subject.ToStringRepresentation()} claim.");
 
 				return;
 			}
@@ -135,8 +135,7 @@ namespace RegionOrebroLan.CertificateIdentity.Web.Authentication.Certificate
 
 			if(distinguishedNameClaim == null)
 			{
-				if(this.Logger.IsEnabled(LogLevel.Warning))
-					this.Logger.LogWarning($"The claims-principal does not contain a claim with type {ClaimTypes.X500DistinguishedName.ToStringRepresentation()}.");
+				this.Logger.LogWarningIfEnabled(() => $"The claims-principal does not contain a claim with type {ClaimTypes.X500DistinguishedName.ToStringRepresentation()}.");
 
 				return;
 			}

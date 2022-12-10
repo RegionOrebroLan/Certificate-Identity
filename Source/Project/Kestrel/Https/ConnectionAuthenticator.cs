@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RegionOrebroLan.CertificateIdentity.Extensions;
 using RegionOrebroLan.CertificateIdentity.Kestrel.Configuration;
+using RegionOrebroLan.CertificateIdentity.Logging.Extensions;
 
 namespace RegionOrebroLan.CertificateIdentity.Kestrel.Https
 {
@@ -36,8 +37,7 @@ namespace RegionOrebroLan.CertificateIdentity.Kestrel.Https
 
 			if(!sslServerAuthentication.ClientCertificateRequired)
 			{
-				if(this.Logger.IsEnabled(LogLevel.Debug))
-					this.Logger.LogDebug("Client-certificate is not required.");
+				this.Logger.LogDebugIfEnabled("Client-certificate is not required.");
 
 				return;
 			}
