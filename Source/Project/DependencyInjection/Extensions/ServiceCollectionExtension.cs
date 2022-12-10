@@ -1,3 +1,4 @@
+using Duende.IdentityServer.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -83,7 +84,7 @@ namespace RegionOrebroLan.CertificateIdentity.DependencyInjection.Extensions
 			if(webHostEnvironment == null)
 				throw new ArgumentNullException(nameof(webHostEnvironment));
 
-			services.AddIdentityServer(options =>
+			var identityServerBuilder = services.AddIdentityServer(options =>
 				{
 					options.SetDefaults();
 
@@ -91,6 +92,9 @@ namespace RegionOrebroLan.CertificateIdentity.DependencyInjection.Extensions
 				})
 				.AddInMemoryClients(configuration.GetSection(ConfigurationKeys.ClientsPath))
 				.AddInMemoryIdentityResources(configuration.GetSection(ConfigurationKeys.IdentityResourcesPath));
+
+			if(configuration.GetValue($"{ConfigurationKeys.FeatureManagementPath}:{nameof(IdentityServerOptions.ServerSideSessions)}", false))
+				identityServerBuilder.AddServerSideSessions();
 
 			var dataDependencyInjectionOptions = new DataDependencyInjectionOptions();
 			configuration.GetSection(ConfigurationKeys.DataPath).Bind(dataDependencyInjectionOptions);

@@ -14,6 +14,7 @@ namespace RegionOrebroLan.CertificateIdentity.Configuration
 		public const string DataProtectionPath = "DataProtection";
 		public const string DefaultConnectionStringName = "IdentityServer";
 		public const string ExceptionHandlingPath = "ExceptionHandling";
+		public const string FeatureManagementPath = "FeatureManagement";
 		public const string ForwardedHeadersPath = "ForwardedHeaders";
 		public const string HstsPath = "Hsts";
 		public const string HttpsRedirectionPath = "HttpsRedirection";

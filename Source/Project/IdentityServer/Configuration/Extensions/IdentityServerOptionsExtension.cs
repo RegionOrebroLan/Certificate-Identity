@@ -15,6 +15,7 @@ namespace RegionOrebroLan.CertificateIdentity.IdentityServer.Configuration.Exten
 			options.Discovery.SetDefaults();
 			options.Endpoints.SetDefaults();
 			options.Events.SetDefaults();
+			options.ServerSideSessions.SetDefaults();
 			options.UserInteraction.SetDefaults();
 		}
 
