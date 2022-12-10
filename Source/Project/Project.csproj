@@ -14,7 +14,7 @@
 		<TargetFrameworks>net7.0</TargetFrameworks>
 		<!-- Version following Duende.IdentityServer. -->
 		<VersionPrefix>6.2.0.1</VersionPrefix>
-		<VersionSuffix>alpha.1</VersionSuffix>
+		<VersionSuffix>alpha.2</VersionSuffix>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.0" />
