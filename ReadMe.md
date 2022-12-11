@@ -310,13 +310,17 @@ The json-certificate-file used for this solution:
 
 ### 2.5 Migrations
 
-We might want to create/recreate migrations. If we can accept data-loss we can recreate the migrations otherwhise we will have to update them.
+We might want to create/recreate migrations. If we can accept data-loss we can recreate the migrations otherwhise we will have to update them. For each update we need to bump the migration-name suffix:
+
+- Initial migration: "Function"
+- First update: "Function1"
+- Second update: "Function2"
 
 Copy all the commands below and run them in the Package Manager Console for the affected database-context.
 
 If you want more migration-information you can add the -Verbose parameter:
 
-	Add-Migration TheMigration -Context TheDatabaseContext -OutputDir Data/Migrations -Project Project -StartupProject Project -Verbose;
+	Add-Migration Function -Context FunctionContext -OutputDir Data/Migrations -Project Project -StartupProject Project -Verbose;
 
 #### 2.5.1 DataProtection
 
@@ -335,8 +339,8 @@ If you want more migration-information you can add the -Verbose parameter:
 ##### 2.5.1.2 Update migrations
 
 	Write-Host "Updating migrations...";
-	Add-Migration DataProtection -Context SqliteDataProtection -OutputDir DataProtection/Data/Migrations/Sqlite -Project Project -StartupProject Project;
-	Add-Migration DataProtection -Context SqlServerDataProtection -OutputDir DataProtection/Data/Migrations/SqlServer -Project Project -StartupProject Project;
+	Add-Migration DataProtection1 -Context SqliteDataProtection -OutputDir DataProtection/Data/Migrations/Sqlite -Project Project -StartupProject Project;
+	Add-Migration DataProtection1 -Context SqlServerDataProtection -OutputDir DataProtection/Data/Migrations/SqlServer -Project Project -StartupProject Project;
 	Write-Host "Finnished";
 
 #### 2.5.2 Operational (PersistedGrant)
@@ -356,8 +360,8 @@ If you want more migration-information you can add the -Verbose parameter:
 ##### 2.5.2.2 Update migrations
 
 	Write-Host "Updating migrations...";
-	Add-Migration Operational -Context SqliteOperational -OutputDir Data/Migrations/Operational/Sqlite -Project Project -StartupProject Project;
-	Add-Migration Operational -Context SqlServerOperational -OutputDir Data/Migrations/Operational/SqlServer -Project Project -StartupProject Project;
+	Add-Migration Operational1 -Context SqliteOperational -OutputDir Data/Migrations/Operational/Sqlite -Project Project -StartupProject Project;
+	Add-Migration Operational1 -Context SqlServerOperational -OutputDir Data/Migrations/Operational/SqlServer -Project Project -StartupProject Project;
 	Write-Host "Finnished";
 
 ### 2.6 Versioning
