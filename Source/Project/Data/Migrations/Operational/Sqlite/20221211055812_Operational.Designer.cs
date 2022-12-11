@@ -11,8 +11,8 @@ using RegionOrebroLan.CertificateIdentity.Data;
 namespace RegionOrebroLan.CertificateIdentity.Data.Migrations.Operational.Sqlite
 {
     [DbContext(typeof(SqliteOperational))]
-    [Migration("20221201144100_SqliteOperationalMigration")]
-    partial class SqliteOperationalMigration
+    [Migration("20221211055812_Operational")]
+    partial class Operational
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -10,8 +10,8 @@ using RegionOrebroLan.CertificateIdentity.DataProtection.Data;
 namespace RegionOrebroLan.CertificateIdentity.DataProtection.Data.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteDataProtection))]
-    [Migration("20221209162844_SqliteDataProtectionMigration")]
-    partial class SqliteDataProtectionMigration
+    [Migration("20221211055656_DataProtection")]
+    partial class DataProtection
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

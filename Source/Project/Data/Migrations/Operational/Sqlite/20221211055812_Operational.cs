@@ -1,10 +1,10 @@
-#nullable disable
+﻿#nullable disable
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegionOrebroLan.CertificateIdentity.Data.Migrations.Operational.Sqlite
 {
 	/// <inheritdoc />
-	public partial class SqliteOperationalMigration : Migration
+	public partial class Operational : Migration
 	{
 		#region Methods
 

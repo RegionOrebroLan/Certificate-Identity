@@ -12,8 +12,8 @@ using RegionOrebroLan.CertificateIdentity.Data;
 namespace RegionOrebroLan.CertificateIdentity.Data.Migrations.Operational.SqlServer
 {
     [DbContext(typeof(SqlServerOperational))]
-    [Migration("20221201144105_SqlServerOperationalMigration")]
-    partial class SqlServerOperationalMigration
+    [Migration("20221211055817_Operational")]
+    partial class Operational
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

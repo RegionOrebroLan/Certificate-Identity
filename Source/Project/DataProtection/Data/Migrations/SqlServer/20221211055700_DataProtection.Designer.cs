@@ -11,8 +11,8 @@ using RegionOrebroLan.CertificateIdentity.DataProtection.Data;
 namespace RegionOrebroLan.CertificateIdentity.DataProtection.Data.Migrations.SqlServer
 {
     [DbContext(typeof(SqlServerDataProtection))]
-    [Migration("20221209162848_SqlServerDataProtectionMigration")]
-    partial class SqlServerDataProtectionMigration
+    [Migration("20221211055700_DataProtection")]
+    partial class DataProtection
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
