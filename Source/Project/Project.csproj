@@ -20,6 +20,7 @@
 		<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="7.0.3" />
 		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="7.0.3" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
