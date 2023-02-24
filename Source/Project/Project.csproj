@@ -13,8 +13,8 @@
 		<RootNamespace>$(AssemblyName)</RootNamespace>
 		<TargetFrameworks>net7.0</TargetFrameworks>
 		<!-- Version following Duende.IdentityServer. -->
-		<VersionPrefix>6.2.0.1</VersionPrefix>
-		<VersionSuffix>alpha.2</VersionSuffix>
+		<VersionPrefix>6.2.3.1</VersionPrefix>
+		<VersionSuffix>alpha</VersionSuffix>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.0" />
